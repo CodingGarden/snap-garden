@@ -2,8 +2,10 @@ import React, { useEffect, useGlobal } from 'reactn';
 import { useFeathers } from 'figbird';
 import Button from 'react-bootstrap/Button';
 
+import API_URL from '../API_URL';
+
 const Login = () => {
-  const [user, setUser] = useGlobal('user');
+  const { 1: setUser } = useGlobal('user');
   const feathers = useFeathers();
 
   useEffect(() => {
@@ -12,7 +14,7 @@ const Login = () => {
     }).catch((error) => {
       console.log('oh no!', error);
     });
-  });
+  }, [feathers, setUser]);
 
   return (
     <div
@@ -24,7 +26,7 @@ const Login = () => {
         height: '100%',
       }}
     >
-      <Button href="http://localhost:3030/oauth/google" variant="danger">Login with Google</Button>
+      <Button href={`${API_URL}/oauth/google`} variant="danger">Login with Google</Button>
     </div>
   );
 };

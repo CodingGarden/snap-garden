@@ -27,7 +27,8 @@
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "dev": "nodemon src/",
     "start": "node src/",
-    "jest": "jest  --forceExit"
+    "jest": "jest  --forceExit",
+    "deploy": "now -e NODE_ENV=production -e GOOGLE_OAUTH_KEY=@snap-garden-google-oauth-key -e GOOGLE_OAUTH_SECRET=@snap-garden-google-oauth-secret -e MONGO_URI=@snap-garden-mongo"
   },
   "dependencies": {
     "@feathersjs/authentication": "^4.3.3",

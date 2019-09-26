@@ -1,4 +1,9 @@
 {
-  "host": "snap-garden-app.feathersjs.com",
-  "port": "PORT"
+  "host": "api.snap.garden",
+  "mongodb": "MONGO_URI",
+  "authentication": {
+    "oauth": {
+      "redirect": "https://snap.garden"
+    }
+  }
 }
