@@ -1,5 +1,7 @@
 # SnapGarden
 
+Realtime ephemeral image sharing + maps.
+
 ## Features
 
 * [x] Login with Google
@@ -11,6 +13,34 @@
     * [ ] After X amount of time
 * [ ] Users can see image markers on the map
   * [ ] Can choose to view images IF within the specified image radius
+
+## Config
+
+#### Client
+* Create a mapbox token [here](https://www.mapbox.com)
+* Update client/.env with your mapbox token
+
+#### Server
+* Create a google client id and secret [here](https://console.developers.google.com/)
+* Update server/.env with your google client id and secret
+
+## Setup / Run
+
+#### Client
+
+```sh
+cd client
+npm install
+npm start
+```
+
+#### Server
+
+```sh
+cd server
+npm install
+npm run dev
+```
 
 ## Stack
 
