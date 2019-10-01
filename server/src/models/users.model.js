@@ -10,7 +10,7 @@ module.exports = function (app) {
     name: { type: String, required: true },
     picture: { type: String, required: true },
   }, {
-    timestamps: true
+    timestamps: true,
   });
 
   return mongooseClient.model('users', users);

@@ -9,3 +9,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.navbar-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

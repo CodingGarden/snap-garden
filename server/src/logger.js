@@ -6,10 +6,10 @@ const logger = createLogger({
   level: 'debug',
   format: format.combine(
     format.splat(),
-    format.simple()
+    format.simple(),
   ),
   transports: [
-    new transports.Console()
+    new transports.Console(),
   ],
 });
 

@@ -6,17 +6,17 @@ class GoogleStrategy extends OAuthStrategy {
     console.log('profile', profile);
     const baseData = await super.getEntityData(profile);
     console.log('baseData', baseData);
-    
+
     return {
       ...baseData,
       picture: profile.picture,
       name: profile.name,
-      email: profile.email
+      email: profile.email,
     };
   }
 }
 
-module.exports = app => {
+module.exports = (app) => {
   const authentication = new AuthenticationService(app);
 
   authentication.register('jwt', new JWTStrategy());

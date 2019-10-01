@@ -40,5 +40,6 @@
       }
     }
   },
-  "mongodb": "mongodb://localhost:27017/snap_garden"
+  "mongodb": "mongodb://localhost:27017/snap_garden",
+  "imgur": "IMGUR_CLIENT_ID"
 }

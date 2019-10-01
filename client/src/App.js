@@ -6,7 +6,7 @@ import Login from './components/Login';
 import Map from './components/Map';
 
 setGlobal({
-  user: null
+  user: null,
 });
 
 export default function App() {

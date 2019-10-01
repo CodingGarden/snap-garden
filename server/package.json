@@ -28,6 +28,7 @@
     "dev": "nodemon src/",
     "start": "node src/",
     "jest": "jest  --forceExit",
+    "lint": "eslint src/",
     "deploy": "now -e NODE_ENV=production -e GOOGLE_OAUTH_KEY=@snap-garden-google-oauth-key -e GOOGLE_OAUTH_SECRET=@snap-garden-google-oauth-secret -e MONGO_URI=@snap-garden-mongo"
   },
   "dependencies": {
@@ -46,12 +47,15 @@
     "helmet": "^3.21.1",
     "mongodb-core": "^3.2.7",
     "mongoose": "^5.7.1",
+    "node-fetch": "^2.6.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "axios": "^0.19.0",
-    "eslint": "^6.4.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "jest": "^24.9.0",
     "nodemon": "^1.19.2"
   }

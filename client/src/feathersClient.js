@@ -9,8 +9,7 @@ const socket = io(API_URL);
 const client = feathers();
 client.configure(socketio(socket));
 client.configure(auth({
-  storage: window.localStorage
+  storage: window.localStorage,
 }));
 
 export default client;
-

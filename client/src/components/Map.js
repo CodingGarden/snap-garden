@@ -4,15 +4,18 @@ import { useFeathers } from 'figbird';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 
-const Map = () => {  
+import useLocation from '../hooks/useLocation';
+import FileUpload from './FileUpload';
+
+const Map = () => {
   const feathers = useFeathers();
-  const [resizeListening, setResizeListening] = useState(false);
+  const location = useLocation();
   const [viewport, setViewport] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
-    latitude: 37.7577,
-    longitude: -122.4376,
-    zoom: 8
+    latitude: 31.9742044,
+    longitude: -49.25875,
+    zoom: 2,
   });
 
   useEffect(() => {
@@ -21,7 +24,7 @@ const Map = () => {
         ...viewport,
         width: window.innerWidth,
         height: window.innerHeight,
-      })
+      });
     };
     window.addEventListener('resize', handleResize);
     return () => {
@@ -29,29 +32,54 @@ const Map = () => {
     };
   });
 
+  useEffect(() => {
+    if (location) {
+      setViewport((vp) => ({
+        ...vp,
+        ...location,
+        zoom: 8,
+      }));
+    }
+  }, [location, setViewport]);
+
   return (
     <>
       <Navbar bg="dark" variant="dark" fixed="top">
-        <Navbar.Brand href="#home">
-          🌱📸 SnapGarden 📸🌱
-        </Navbar.Brand>
-        <Button onClick={() => {
-          feathers.logout();
-          window.location.href = '/';
-        }} variant="danger">Logout</Button>
+        <Navbar.Brand href="#home">🌱📸 SnapGarden 📸🌱</Navbar.Brand>
+        <div className="navbar-buttons">
+          <FileUpload />
+          <Button
+            onClick={() => {
+              feathers.logout();
+              window.location.href = '/';
+            }}
+            variant="danger"
+          >
+            Logout
+          </Button>
+        </div>
       </Navbar>
       <ReactMapGL
         mapStyle="mapbox://styles/mapbox/dark-v9"
         mapboxApiAccessToken={process.env.REACT_APP_MapboxAccessToken}
         {...viewport}
-        onViewportChange={(viewport) => setViewport(viewport)}
+        onViewportChange={(vp) => setViewport(vp)}
       >
-        <Marker latitude={37.78} longitude={-122.41} offsetLeft={-20} offsetTop={-10}>
-          <span style={{ fontSize: `${viewport.zoom * 0.5}rem` }}>📸</span>
-        </Marker>
+        {location ? (
+          <Marker
+            latitude={location.latitude}
+            longitude={location.longitude}
+            offsetLeft={-20}
+            offsetTop={-10}
+          >
+            <span style={{ fontSize: `${viewport.zoom * 0.5}rem` }}>📸</span>
+          </Marker>
+        ) : null}
       </ReactMapGL>
     </>
   );
 };
 
 export default Map;
+
+
