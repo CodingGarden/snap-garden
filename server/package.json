@@ -46,7 +46,7 @@
     "feathers-mongoose": "^8.0.2",
     "helmet": "^3.21.1",
     "mongodb-core": "^3.2.7",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "node-fetch": "^2.6.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"
